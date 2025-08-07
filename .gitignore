@@ -2,8 +2,10 @@
 
 # dependencies
 /node_modules
-.history/
+/.history
+/prisma
 /.pnp
+/pub
 .pnp.js
 
 # testing
