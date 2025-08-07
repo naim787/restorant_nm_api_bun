@@ -1,10 +1,3 @@
-import { prisma } from '../../conf/database.js';
-import { generateUniqueID } from '../../services/id_generate.js';
-import { Fformproduct } from '../../services/validator.js'
-import { t } from 'elysia';
-import { join } from 'path';
-import { mkdirSync } from 'fs';
-
 // create product
 export const createProduct = {
     handler: async({ body, set }) => {

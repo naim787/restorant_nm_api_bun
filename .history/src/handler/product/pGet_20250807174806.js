@@ -1,4 +1,3 @@
-import { prisma } from '../../conf/database.js';
 // get product
 export const getAllProducts = {
     handler: async({set }) => {
