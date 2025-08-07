@@ -6,7 +6,7 @@ let timeout = null;
 
 function getTimestampMessage() {
     const now = new Date();
-    return `Auto commit: ${now.toLocaleString()}`;
+    return `Update: ${now.toLocaleString()}`;
 }
 
 async function commitAndPush() {
@@ -37,5 +37,5 @@ chokidar.watch('.', {
     clearTimeout(timeout);
     timeout = setTimeout(() => {
         commitAndPush();
-    }, 3 * 60 * 1000); // Tunggu 3 menit dari perubahan terakhir
+    }, 1 * 60 * 1000); // Tunggu 3 menit dari perubahan terakhir
 });
