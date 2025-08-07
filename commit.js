@@ -2,10 +2,11 @@ import chokidar from 'chokidar';
 import simpleGit from 'simple-git';
 
 const git = simpleGit();
-let timeout = null;
+let lastCommitTime = 0;
+const COMMIT_INTERVAL = 1 * 60 * 1000; // 1 menit
+const now = new Date();
 
 function getTimestampMessage() {
-    const now = new Date();
     return `Update: ${now.toLocaleString()}`;
 }
 
@@ -18,13 +19,23 @@ async function commitAndPush() {
 
     console.log('📦 Melakukan add, commit, dan push...');
     try {
-        // Gunakan ./\* agar untracked juga ikut
-        await git.add('./*');
+        await git.add('.');
         await git.commit(getTimestampMessage());
         await git.push();
+        lastCommitTime = Date.now();
         console.log('✅ Sukses commit dan push!');
     } catch (error) {
         console.error('❌ Error saat git commit/push:', error);
+    }
+}
+
+async function maybeCommit() {
+    const now = Date.now();
+    if (now - lastCommitTime >= COMMIT_INTERVAL) {
+        await commitAndPush();
+    } else {
+        const sisa = ((COMMIT_INTERVAL - (now - lastCommitTime)) / 1000).toFixed(1);
+        console.log(`⏳ Menunggu ${sisa} detik lagi sebelum commit berikutnya...`);
     }
 }
 
@@ -33,9 +44,5 @@ chokidar.watch('.', {
     persistent: true
 }).on('all', (event, path) => {
     console.log(`📁 Perubahan terdeteksi: ${path} (${event})`);
-
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-        commitAndPush();
-    }, 1 * 60 * 1000); // Tunggu 1 menit dari perubahan terakhir
+    maybeCommit();
 });
