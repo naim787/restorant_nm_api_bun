@@ -1,0 +1,28 @@
+import { prisma } from '../../conf/database.js';
+import { generateUniqueID } from '../../services/id_generate.js';
+
+export const createProduct = async({ body, set }) => {
+    try {
+        const productData = {
+            ...body,
+            id: generateUniqueID()
+        };
+
+        // const product = await prisma.products.create({
+        //     data: productData
+        // });
+
+        console.log(productData)
+        set.status = 201;
+        return {
+            message: "Product created successfully",
+            data: productData
+        };
+
+    } catch (error) {
+        set.status = 500;
+        return {
+            error: "Failed to create product"
+        };
+    }
+};

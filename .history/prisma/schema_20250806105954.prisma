@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Restaurant {
+  id           String   @id @default(uuid())
+  name         String
+  address      String
+  phoneNumber  String
+  email        String?   // optional
+  openingHours String
+  rating       Float?    // optional
+}
+
+model Warehouse {
+  id           String   @id @default(uuid())
+  name         String
+  location     String
+  capacity     Int
+  currentStock Int
+  managerName  String
+  contact      String
+  type         String
+  storage      String[] // Prisma tidak support array string di semua DB, di SQLite pakai json
+}
+
+model Users {
+  id       String @id @default(uuid())
+  name     String
+  email    String
+  password String
+  bisLoc   String
+  dateLoc  String
+  year     String
+  role     String
+}
+
+model Products {
+  id          String  @id @default(uuid())
+  name        String
+  description String
+  category    String
+  price       Float
+  stock       Int
+  imageUrl    String
+}
+
+model Pesnan {
+  id        Int    @id @default(autoincrement())
+  products  String // Simpan sebagai JSON string
+  tableId   String
+  waiterId  String
+  time      String
+}

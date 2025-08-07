@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./restaurant.db"
+}
+
+model Users {
+  id      String @id
+  name    String
+  email   String
+  password String
+  bisLoc  String @map("bis_loc")
+  dateLoc String @map("date_loc")
+  year    String
+  role    String
+
+  @@map("users")
+}
+
+model Products {
+  id          String  @id
+  name        String
+  description String
+  category    String
+  price       Float
+  stock       Int
+  imageUrl    String  @map("image_url")
+
+  @@map("products")
+}
+
+model Pesnan {
+  id       Int    @id @default(autoincrement())
+  products String // JSON string
+  tableId  String @map("table_id")
+  waiterId String @map("waiter_id")
+  time     String
+
+  @@map("pesnan")
+}
