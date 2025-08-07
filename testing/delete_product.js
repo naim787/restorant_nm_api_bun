@@ -1,11 +1,3 @@
-console.log("🧨 Hapus ID:", params.id);
-
-const found = await prisma.products.findUnique({
-    where: { id: params.id }
+await fetch('http://localhost:3000/products/7517', {
+    method: 'DELETE'
 });
-
-if (!found) {
-    console.log("⚠️ Produk tidak ditemukan");
-    set.status = 404;
-    return { error: "Produk tidak ditemukan" };
-}
