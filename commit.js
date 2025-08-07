@@ -3,7 +3,7 @@ import simpleGit from 'simple-git';
 
 const git = simpleGit();
 let lastCommitTime = 0;
-const COMMIT_INTERVAL = 1 * 60 * 1000; // 1 menit
+const COMMIT_INTERVAL = 1 * 60 * 1000;
 const now = new Date();
 
 function getTimestampMessage() {
