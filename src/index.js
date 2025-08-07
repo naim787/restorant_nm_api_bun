@@ -7,6 +7,7 @@ import { productRoutes } from './handler/pRoutes.js';
 import { websocketHandler } from './handler/websoket/wHandler.js';
 
 // Setup database
+
 await setupDatabase();
 
 const app = new Elysia()
