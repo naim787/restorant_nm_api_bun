@@ -7,7 +7,7 @@ export const productRoutes = new Elysia()
     .post('/create-products', createProduct.handler, {
         body: createProduct.body
     })
-    .get('/products', getAllProducts.handler)
+    .get('/menu', getAllProducts.handler)
     .delete('/products/:id', deleteProduct.handler, {
         params: deleteProduct.params
     });
