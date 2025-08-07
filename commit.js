@@ -37,5 +37,5 @@ chokidar.watch('.', {
     clearTimeout(timeout);
     timeout = setTimeout(() => {
         commitAndPush();
-    }, 1 * 60 * 1000); // Tunggu 3 menit dari perubahan terakhir
+    }, 1 * 60 * 1000); // Tunggu 1 menit dari perubahan terakhir
 });
