@@ -5,7 +5,7 @@
 /.history
 /prisma
 /.pnp
-/pub
+public/*
 .pnp.js
 
 # testing
