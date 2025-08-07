@@ -22,7 +22,7 @@ export const deleteProduct = {
         }
     },
 
-    params: {
-        id: 'string'
-    }
+    params: t.Object({
+        id: t.String()
+    })
 };
