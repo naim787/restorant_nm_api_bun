@@ -8,7 +8,7 @@ import { mkdirSync } from 'fs';
 // create product
 export const createProduct = {
     handler: async({ body, set }) => {
-        const uploadDir = '/public/uploads';
+        const uploadDir = 'public/uploads';
         mkdirSync(uploadDir, { recursive: true });
         try {
             const file = body.image_url;
@@ -24,7 +24,7 @@ export const createProduct = {
                 stock: parseInt(body.stock),
                 description: body.description,
                 id: generateUniqueID(),
-                image_url: `${uploadDir}/${filename}`
+                image_url: `${uplo}/${filename}`
             };
             const product = await prisma.products.create({ data: productData });
             set.status = 201;
