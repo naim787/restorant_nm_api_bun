@@ -16,8 +16,8 @@ model Users {
   name    String
   email   String
   password String
-  bisLoc  String @map("bis_loc")
-  dateLoc String @map("date_loc")
+  bis_loc  String @map("bis_loc")
+   String @map("date_loc")
   year    String
   role    String
 
@@ -39,8 +39,8 @@ model Products {
 model Pesnan {
   id       Int    @id @default(autoincrement())
   products String // JSON string
-  tableId  String @map("table_id")
-  waiterId String @map("waiter_id")
+  table_id  String @map("table_id")
+  waiter_id String @map("waiter_id")
   time     String
 
   @@map("pesnan")
