@@ -12,7 +12,7 @@ export const deleteProduct = {
                 }
             });
 
-            // hapusimg 
+            // hapus img 
 
             return {
                 message: "Produk berhasil dihapus",
