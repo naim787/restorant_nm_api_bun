@@ -31,7 +31,7 @@ model Products {
   category    String
   price       Float
   stock       Int
-  imageUrl    String  @map("image_url")
+  image_url   String  @map("image_url")
 
   @@map("products")
 }
