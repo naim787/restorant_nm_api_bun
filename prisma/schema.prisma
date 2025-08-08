@@ -38,7 +38,7 @@ model Products {
 
 model Pesnan {
   id       Int    @id @default(autoincrement())
-  products String 
+  products String @
   table_id  String @map("table_id")
   waiter_id String @map("waiter_id")
   time     String
