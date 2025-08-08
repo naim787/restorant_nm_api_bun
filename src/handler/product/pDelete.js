@@ -19,14 +19,6 @@ export const deleteProduct = {
                     error: "Produk tidak ditemukan"
                 };
             }
-
-            // 🔸 Hapus produk dari DB
-            const deleted = await prisma.products.delete({
-                where: {
-                    id: params.id
-                }
-            });
-
             // 🔸 Hapus gambar
             const imagePath = join('public', product.image_url); // misalnya 'public/uploads/123.jpg'
 
@@ -36,6 +28,14 @@ export const deleteProduct = {
             } else {
                 console.warn("⚠️ File gambar tidak ditemukan:", imagePath);
             }
+
+            // 🔸 Hapus produk dari DB
+            const deleted = await prisma.products.delete({
+                where: {
+                    id: params.id
+                }
+            });
+
 
             return {
                 message: "Produk berhasil dihapus",
