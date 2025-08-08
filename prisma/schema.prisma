@@ -42,7 +42,7 @@ model Pesnan {
   table_id  String @map("table_id")
   waiter_id String @map("waiter_id")
   time     String
-  status
+  status String
 
   @@map("pesnan")
 }
