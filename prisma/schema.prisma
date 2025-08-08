@@ -29,8 +29,8 @@ model Products {
   name        String
   description String
   category    String
-  stock     BigInt   // angka besar
-  price     Decimal  // uang
+  price       Float
+  stock       Int
   image_url   String  @map("image_url")
 
   @@map("products")
