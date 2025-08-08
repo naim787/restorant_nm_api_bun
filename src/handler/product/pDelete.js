@@ -12,6 +12,8 @@ export const deleteProduct = {
                 }
             });
 
+            // hapusimg 
+
             return {
                 message: "Produk berhasil dihapus",
                 data: deleted
