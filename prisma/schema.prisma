@@ -17,7 +17,7 @@ model Users {
   email   String
   password String
   bis_loc  String @map("bis_loc")
-   String @map("date_loc")
+  date_loc String @map("date_loc")
   year    String
   role    String
 
