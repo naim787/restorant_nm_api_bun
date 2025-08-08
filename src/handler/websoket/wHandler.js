@@ -22,6 +22,7 @@ export const websocketHandler = {
             //     });
             // }
 
+            console.log(orders)
             const response = {
                 message: "Orders saved successfully"
             };

@@ -24,7 +24,7 @@ export const createProduct = {
                 stock: parseInt(body.stock),
                 description: body.description,
                 id: generateUniqueID(),
-                imageUrl: `/uploads/${filename}`
+                : `/uploads/${filename}`
             };
             const product = await prisma.products.create({ data: productData });
             set.status = 201;
