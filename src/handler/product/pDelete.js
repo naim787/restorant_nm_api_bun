@@ -19,6 +19,7 @@ export const deleteProduct = {
                     error: "Produk tidak ditemukan"
                 };
             }
+
             // 🔸 Hapus gambar
             const imagePath = join('public', product.image_url); // misalnya 'public/uploads/123.jpg'
 
