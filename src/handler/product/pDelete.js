@@ -1,5 +1,7 @@
 import { prisma } from '../../conf/database.js';
 import { t } from 'elysia';
+import { unlinkSync, existsSync } from 'fs';
+import { join } from 'path';
 
 export const deleteProduct = {
     handler: async({ params, set }) => {
