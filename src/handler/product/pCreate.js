@@ -8,7 +8,7 @@ import { mkdirSync } from 'fs';
 // create product
 export const createProduct = {
     handler: async({ body, set }) => {
-        const uploadDir = 'public/uploads';
+        const uploadDir = '/public/uploads';
         mkdirSync(uploadDir, { recursive: true });
         try {
             const file = body.image_url;
