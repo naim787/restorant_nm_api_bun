@@ -13,6 +13,15 @@ export const deleteProduct = {
             });
 
             // hapus img 
+            const imagePath = join('public', product.image_url);
+
+            // 4. Hapus file jika ada
+            if (existsSync(imagePath)) {
+                unlinkSync(imagePath);
+                console.log("🧹 Gambar dihapus:", imagePath);
+            } else {
+                console.warn("⚠️ File gambar tidak ditemukan:", imagePath);
+            }
 
             return {
                 message: "Produk berhasil dihapus",
