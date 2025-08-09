@@ -29,6 +29,11 @@ export const createProduct = {
             const product = await prisma.products.create({ data: productData });
             set.status = 201;
 
+            function safeJson(obj) {
+                return JSON.parse(JSON.stringify(obj, (_, value) =>
+                    typeof value === 'bigint' ? value.toString() : value
+                ));
+            }
 
             return {
                 message: "Produk berhasil dibuat!",
