@@ -20,6 +20,7 @@ export const deleteProduct = {
                 };
             }
 
+            megh
             // 🔸 Hapus gambar
             const imagePath = join('public', product.image_url); // misalnya 'public/uploads/123.jpg'
 
