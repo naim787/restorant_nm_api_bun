@@ -1,5 +1,5 @@
 import { Elysia } from 'elysia';
-import { getUsers } from './user/uG.js';
+import { getUsers } from './user/uGet.js';
 import { getUsers, createUser } from './user/uHandler.js';
 
 export const userRoutes = new Elysia()
