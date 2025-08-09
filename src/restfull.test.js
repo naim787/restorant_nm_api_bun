@@ -1,6 +1,6 @@
 import { test, expect } from "bun:test";
 
-test("hapus user yang ada di DB", async() => {
+test("hapus user", async() => {
     const userId = "123"; // ID user yang mau dihapus
 
     const res = await fetch(`http://localhost:3000/users/${userId}`, {
