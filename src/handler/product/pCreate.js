@@ -27,13 +27,7 @@ export const createProduct = {
                 image_url: `public/uploads/${filename}`
             };
             const product = await prisma.products.create({ data: productData });
-
-            const safeProduct = JSON.parse(JSON.stringify(product, (_, v) =>
-                typeof v === 'bigint' ? v.toString() : v
-            ));
-
-            res.status(201).json(safeProduct);
-
+            set.status = 201;
             return {
                 message: "Produk berhasil dibuat!",
                 data: product
