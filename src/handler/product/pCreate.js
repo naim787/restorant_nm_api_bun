@@ -28,6 +28,8 @@ export const createProduct = {
             };
             const product = await prisma.products.create({ data: productData });
             set.status = 201;
+
+
             return {
                 message: "Produk berhasil dibuat!",
                 data: product
