@@ -13,7 +13,7 @@ export const getAllProducts = {
             const products = await prisma.products.findMany();
             return {
                 message: "Daftar semua produk",
-                data: products
+                data: bigIntToString(products)
             };
         } catch (error) {
             console.error("❌ Gagal ambil produk:", error.message);
