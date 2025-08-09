@@ -21,7 +21,7 @@ const app = new Elysia()
     // WebSocket route
     .ws('/ws/orders', websocketHandler)
     .listen(3000, () => {
-        console.log('👾👾👽👽  http://localhost:3000');
+        console.log('👾👾👽👽 RUN IN PORT: http://localhost:3000');
     });
 
 export default app;
