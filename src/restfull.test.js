@@ -1,7 +1,7 @@
 import { test, expect } from "bun:test";
 
 test("hapus user", async() => {
-    const userId = "123"; // ID user yang mau dihapus
+    const userId = "1689"; // ID user yang mau dihapus
 
     const res = await fetch(`http://localhost:3000/users/${userId}`, {
         method: "DELETE"
