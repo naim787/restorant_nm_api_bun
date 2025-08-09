@@ -23,7 +23,7 @@ export const deleteProduct = {
             // meghapus tanda /public
             const urlImg = product.image_url.replace(/^public\//, '');
             // 🔸 Hapus gambar
-            const imagePath = join('public', url); // misalnya 'public/uploads/123.jpg'
+            const imagePath = join('public', urlImg); // misalnya 'public/uploads/123.jpg'
 
             if (existsSync(imagePath)) {
                 unlinkSync(imagePath);
