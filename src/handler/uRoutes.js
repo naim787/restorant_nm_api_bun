@@ -4,4 +4,5 @@ import { createUser } from './user/uCreate.js';
 
 export const userRoutes = new Elysia()
     .get('/users', getUsers)
-    .post('/create-users', createUser).delete('/delete-user/:id', deleteUser)
+    .post('/create-users', createUser)
+    .delete('/delete-user/:id', deleteUser)
