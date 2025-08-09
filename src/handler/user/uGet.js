@@ -1,3 +1,4 @@
+import { prisma } from '../../../conf/database.js';
 export const getUsers = async({set }) => {
     try {
         const users = await prisma.users.findMany();
