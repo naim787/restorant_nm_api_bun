@@ -1,15 +1,46 @@
 import { prisma } from '../../conf/database.js';
-export const deleteUsers = async({set }) => {
-    try {
-        await prisma.users.deleteMany();
+import { t } from 'elysia';
 
-        return {
-            message: "All users deleted successfully"
-        };
-    } catch (error) {
-        set.status = 500;
-        return {
-            error: "Failed to delete users"
-        };
-    }
+export const deleteUsers = {
+    handler: async({ params, set }) => {
+        try {
+            // 🔹 Cek apakah user ada
+            const user = await prisma.users.findUnique({
+                where: {
+                    id: params.id
+                }
+            });
+
+            if (!user) {
+                set.status = 404;
+                return {
+                    error: "User tidak ditemukan"
+                };
+            }
+
+            // 🔸 Hapus user dari DB
+            const deleted = await prisma.users.delete({
+                where: {
+                    id: params.id
+                }
+            });
+
+            return {
+                message: "User berhasil dihapus",
+                data: deleted
+            };
+
+        } catch (err) {
+            console.error("❌ Gagal hapus user:", err.message);
+            set.status = 500;
+            return {
+                error: "Terjadi kesalahan saat menghapus user"
+            };
+        }
+    },
+
+    // Validasi params ID
+    params: t.Object({
+        id: t.String()
+    })
 };
