@@ -1,5 +1,12 @@
 import { prisma } from '../../conf/database.js';
 // get product
+
+function bigIntToString(obj) {
+    return JSON.parse(JSON.stringify(obj, (_, value) =>
+        typeof value === 'bigint' ? value.toString() : value
+    ));
+}
+
 export const getAllProducts = {
     handler: async({set }) => {
         try {
