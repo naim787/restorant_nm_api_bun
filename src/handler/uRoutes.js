@@ -6,4 +6,6 @@ import { deleteUsers } from './user/uDelete.js';
 export const userRoutes = new Elysia()
     .get('/users', getUsers)
     .post('/create-users', createUser)
-    .delete('/delete-user/:id', deleteUsers)
+    .delete('/delete-user/:id', deleteUsers.handler, {
+        params: deleteUsers.params
+    });
