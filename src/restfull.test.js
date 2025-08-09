@@ -12,3 +12,4 @@ try {
     console.log("Response:", data);
 } catch (err) {
     console.error("Gagal parse JSON:", err.message);
+}
