@@ -20,7 +20,7 @@ export const createUser = {
                 role: "user"
             };
 
-            const user = await prisma.users.create({
+            const user = await prisma.sers.create({
                 data: userData
             });
 
