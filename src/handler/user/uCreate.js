@@ -12,7 +12,7 @@ export const createUser = {
                 role: "user"
             };
 
-            const user = await prisma.users.create({
+            const user = await prisma.Users.create({
                 data: userData
             });
 
@@ -28,13 +28,13 @@ export const createUser = {
                 error: "Failed to create user"
             };
         }
-        body: t.Object({
-            name: t.String(),
-            email: t.String({ format: 'email' }),
-            password: t.String(),
-            bis_loc: t.String(),
-            date_loc: t.String(),
-            year: t.String(),
-        }),
-    }
+    },
+    body: t.Object({
+        name: t.String(),
+        email: t.String(),
+        password: t.String(),
+        bis_loc: t.String(),
+        date_loc: t.String(),
+        year: t.String(),
+    })
 };
