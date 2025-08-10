@@ -1,5 +1,7 @@
+import { t } from 'elysia';
 import { prisma } from '../../conf/database.js';
 import { generateUniqueID } from '../../services/id_generate.js';
+
 export const createUser = {
     body: t.Object({
         name: t.String(),
