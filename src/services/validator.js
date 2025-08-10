@@ -1,10 +1,3 @@
-// Cek batas stok sebelum simpan
-const stockNumber = parseInt(); // ubah string ke number
-
-if (isNaN(stockNumber) || stockNumber > 1000000) {
-    set.status = 400;
-    return { error: "Stock tidak boleh lebih dari 1.000.000" };
-}
 export function Fformproduct(t) {
     return t.Object({
         name: t.String(),
