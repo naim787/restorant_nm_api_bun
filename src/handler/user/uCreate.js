@@ -3,14 +3,14 @@ import { prisma } from '../../conf/database.js';
 import { generateUniqueID } from '../../services/id_generate.js';
 
 export const createUser = {
-        body: t.Object({
-                name: t.String(),
-                email: t.String({ format: 'email' }),
-                password: t.String(),
-                bis_loc: t.String()),
-            date_loc: t.Optional(t.String()),
-            year: t.Optional(t.String())
-        }),
+    body: t.Object({
+        name: t.String(),
+        email: t.String({ format: 'email' }),
+        password: t.String(),
+        bis_loc: t.String(),
+        date_loc: t.Optional(t.String()),
+        year: t.Optional(t.String())
+    }),
 
     handler: async({ body, set }) => { // ✅ typo diperbaiki
         try {
