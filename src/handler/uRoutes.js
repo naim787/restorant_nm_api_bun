@@ -9,5 +9,12 @@ export const userRoutes = new Elysia()
         body: createUser.body
     })
     .delete('/delete-user/:id', deleteUsers.handler, {
-        params: deleteUsers.params
+        body: t.Object({
+            name: t.String(),
+            email: t.String(),
+            password: t.String(),
+            bis_loc: t.String(),
+            date_loc: t.String(),
+            year: t.String()
+        })
     });
