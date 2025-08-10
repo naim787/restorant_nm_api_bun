@@ -31,7 +31,7 @@ export const createProduct = {
 
             return {
                 message: "Produk berhasil dibuat!",
-                data: safeJson(product) // ✅ fix BigInt issue
+                data: // ✅ fix BigInt issue
             };
 
         } catch (err) {
