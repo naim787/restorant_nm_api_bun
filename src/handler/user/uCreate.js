@@ -12,7 +12,7 @@ export const createUser = {
         year: t.Optional(t.String())
     }),
 
-    hanle: async({ body, set }) => {
+    handler: async({ body, set }) => {
         try {
             const userData = {
                 ...body,
