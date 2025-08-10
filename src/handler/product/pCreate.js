@@ -11,6 +11,15 @@ export const createProduct = {
         const uploadDir = 'public/uploads';
         mkdirSync(uploadDir, { recursive: true });
         try {
+
+            // 📌 Validasi stok maksimum
+            const stockNumber = parseInt(body.stock, 10);
+            if (isNaN(stockNumber) || stockNumber > 1000000) {
+                set.status = 400;
+                return { error: "Stock tidak boleh lebih dari 1.000.000" };
+            }
+
+            // image 
             const file = body.image_url;
             const buffer = Buffer.from(await file.arrayBuffer());
             const filename = `${Date.now()}.${file.name.split(".").pop()}`;
@@ -20,7 +29,7 @@ export const createProduct = {
             const productData = {
                 name: body.name,
                 category: body.category,
-                price: parseFloat(body.price),
+                price: parseInt(body.price),
                 stock: parseInt(body.stock),
                 description: body.description,
                 id: generateUniqueID(),
