@@ -3,13 +3,12 @@
 ## Getting Started
 To get started with this template, simply paste this command into your terminal:
 ```bash
-bun run ./
+bun run ./src/index.js
 ```
-
-## Development
-To start the development server run:
+auto reload
 ```bash
-bun run dev
+bun run --watch ./src/index.js
 ```
-
-Open http://localhost:3000/ with your browser to see the result.
+```bash
+bun run --watch ./src/index.js
+```
