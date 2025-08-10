@@ -30,7 +30,7 @@ model Products {
   description String
   category    String
   price       Decimal
-  stock       De
+  stock       Decimal
   image_url   String  @map("image_url")
 
   @@map("products")
