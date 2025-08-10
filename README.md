@@ -9,6 +9,9 @@ auto reload
 ```bash
 bun run --watch ./src/index.js
 ```
+prisma studio
 ```bash
-bun run --watch ./src/index.js
+bunx prisma studio
 ```
+
+
