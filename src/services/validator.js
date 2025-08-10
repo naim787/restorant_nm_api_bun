@@ -1,5 +1,5 @@
 // Cek batas stok sebelum simpan
-const stockNumber = parseInt(b); // ubah string ke number
+const stockNumber = parseInt(); // ubah string ke number
 
 if (isNaN(stockNumber) || stockNumber > 1000000) {
     set.status = 400;
