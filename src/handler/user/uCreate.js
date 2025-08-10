@@ -30,6 +30,7 @@ export const createUser = {
                 data: user
             };
         } catch (error) {
+            console.error(error);
             set.status = 500;
             return {
                 error: "Failed to create user"
