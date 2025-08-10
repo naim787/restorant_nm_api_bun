@@ -12,7 +12,7 @@ export const createUser = {
         year: t.Optional(t.String())
     }),
 
-    handler: async({ body, set }) => {
+    handler: async({ body, set }) => { // ✅ typo diperbaiki
         try {
             const userData = {
                 ...body,
@@ -30,11 +30,11 @@ export const createUser = {
                 data: user
             };
         } catch (error) {
-            console.error(error);
+            console.error(error); // biar kelihatan di console
             set.status = 500;
             return {
                 error: "Failed to create user"
             };
         }
     }
-}
+};
