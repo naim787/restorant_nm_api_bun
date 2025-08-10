@@ -6,9 +6,7 @@ import { t } from 'elysia';
 
 export const userRoutes = new Elysia()
     .get('/users', getUsers.handler)
-    .post('/create-users', createUser.handler, {
-        body: createUser.body
-    })
+    .post('/create-users', createUser)
     .delete('/delete-user/:id', deleteUsers.handler, {
         body: t.Object({
             name: t.String(),
