@@ -3,7 +3,7 @@ export function Fformproduct(t) {
         name: t.String(),
         category: t.String(),
         price: t.String(),
-        stock: t.String(),
+        stock: t.Number({ maximum: 1000000 }),
         description: t.String(),
         admin_id: t.String(),
         image_url: t.File({
