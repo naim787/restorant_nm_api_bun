@@ -1,6 +1,8 @@
 import { prisma } from '../../conf/database.js';
 import { generateUniqueID } from '../../services/id_generate.js';
-export const createUser = {}
+export const createUser = {
+
+}
 async({ body, set }) => {
     try {
         const userData = {
