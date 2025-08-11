@@ -9,18 +9,18 @@ export const websocketHandler = {
                 throw new Error('Expected an array of orders');
             }
 
-            // for (const order of orders) {
-            //     // Convert products to JSON string if it's an object
-            //     const orderData = {
-            //         ...order,
-            //         products: typeof order.products === 'object' ?
-            //             JSON.stringify(order.products) : order.products
-            //     };
+            for (const order of orders) {
+                // Convert products to JSON string if it's an object
+                const orderData = {
+                    ...order,
+                    products: typeof order.products === 'object' ?
+                        JSON.stringify(order.products) : order.products
+                };
 
-            //     await prisma.pesnan.create({
-            //         data: orderData
-            //     });
-            // }
+                await prisma.pesnan.create({
+                    data: orderData
+                });
+            }
 
             console.log(orders)
             const response = {
