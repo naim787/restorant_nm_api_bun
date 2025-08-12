@@ -21,7 +21,7 @@ const app = new Elysia()
     // WebSocket route
     .ws('/ws/orders', websocketHandler)
     .listen({
-        port: 3001,
+        port: 3000,
         hostname: '0.0.0.0'
     });
 
