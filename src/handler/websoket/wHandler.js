@@ -1,6 +1,6 @@
 import { prisma } from '../../conf/database.js';
 
-export const websocketHandler = {.......,
+export const websocketHandler = {,
 
     open: (ws) => {
         console.log('WebSocket connection opened');
