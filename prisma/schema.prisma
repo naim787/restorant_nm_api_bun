@@ -40,7 +40,7 @@ model Pesnan {
   id       Int    @id @default(autoincrement())
   products_id String 
   table_id  String @map("table_id")
-  waiter_name String @map("waiter_ns")
+  waiter_name String @map("waiter_name")
   time     String
   status String
 
