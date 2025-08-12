@@ -44,7 +44,7 @@ model Pesnan {
   time     String
   status String
   total String
-   String
+  type String
   @@unique([products_id, table_id, time]) // cek kalau duplikat
   @@map("pesnan")
 }
