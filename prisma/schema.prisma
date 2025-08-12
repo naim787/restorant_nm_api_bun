@@ -43,6 +43,6 @@ model Pesnan {
   waiter_name String @map("waiter_name")
   time     String
   status String
-
+  @@unique([products_id, table_id, time])
   @@map("pesnan")
 }
