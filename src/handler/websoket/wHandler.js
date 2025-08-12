@@ -3,40 +3,20 @@ import { prisma } from '../../conf/database.js';
 export const websocketHandler = {
     message: async(ws, message) => {
         try {
-            const orders = JSON.parse(message);
+            console.log('📩 Raw message:', message, typeof message);
 
-            if (!Array.isArray(orders)) {
-                throw new Error('Expected an array of orders');
+            let orders;
+            if (typeof message === 'string') {
+                orders = JSON.parse(message);
+            } else if (message instanceof Uint8Array) {
+                orders = JSON.parse(new TextDecoder().decode(message));
+            } else {
+                orders = message;
             }
 
-            for (const order of orders) {
-                // Convert products to JSON string if it's an object
-                const orderData = {
-                    ...order,
-                    products: typeof order.products === 'object' ?
-                        JSON.stringify(order.products) : order.products
-                };
-
-                await prisma.pesnan.create({
-                    data: orderData
-                });
-            }
-
-            console.log(orders)
-            const response = {
-                message: "Orders saved successfully"
-            };
-
-            ws.send(JSON.stringify(response));
+            console.log('✅ Parsed orders:', orders);
         } catch (error) {
             console.error('Error processing orders:', error);
-
-            const errorResponse = {
-                error: "Failed to save orders",
-                details: error.message
-            };
-
-            ws.send(JSON.stringify(errorResponse));
         }
     },
 
