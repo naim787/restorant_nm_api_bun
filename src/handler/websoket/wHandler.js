@@ -30,7 +30,7 @@ export const websocketHandler = {
                     waiter_name: order.waiter_name,
                     time: order.time,
                     status: order.status
-                })),
+                }))
             });
 
             console.log(`✅ ${result.count} pesanan disimpan ke database`);
