@@ -31,7 +31,6 @@ export const websocketHandler = {
                     time: order.time,
                     status: order.status
                 })),
-                skipDuplicates: true // optional, cegah duplikat kalau ada constraint unik
             });
 
             console.log(`✅ ${result.count} pesanan disimpan ke database`);
