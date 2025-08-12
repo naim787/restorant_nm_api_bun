@@ -43,7 +43,8 @@ model Pesnan {
   waiter_name String @map("waiter_name")
   time     String
   status String
-  total 
+  total String
+  
   @@unique([products_id, table_id, time]) // cek kalau duplikat
   @@map("pesnan")
 }
