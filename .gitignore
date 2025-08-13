@@ -21,6 +21,7 @@ public/*
 # misc
 .DS_Store
 *.pem
+commit.js
 
 # debug
 npm-debug.log*
