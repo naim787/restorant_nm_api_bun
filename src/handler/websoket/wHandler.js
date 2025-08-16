@@ -45,13 +45,10 @@ export const websocketHandler = {
                 include: { product_orders: true }
             });
 
-            console.log("✅ Pesanan tersimpan:", savedOrder);
-
-
-            console.log(`✅ ${result.count} pesanan disimpan ke database`);
+            console.log("✅ Pesanan tersimpan:", savedOrder.count);
 
             // Kirim respon ke FE
-            ws.send(JSON.stringify({ success: true, saved: result.count }));
+            ws.send(JSON.stringify({ success: true, saved: savedOrder.count }));
 
         } catch (error) {
             console.error('❌ Error processing orders:', error);
