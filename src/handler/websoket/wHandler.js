@@ -23,15 +23,30 @@ export const websocketHandler = {
             }
 
             // Simpan ke database
-            const result = await prisma.pesnan.createMany({
-                data: orders.map(order => ({
-                    products_id: order.products_id,
-                    table_id: String(order.table_id),
-                    waiter_name: order.waiter_name,
-                    time: order.time,
-                    status: order.status
-                }))
+            // simpan ke DB
+            const savedOrder = await prisma.order.create({
+                data: {
+                    table_id: orders.table_id,
+                    waiter_name: orders.waiter_name,
+                    time: orders.time,
+                    total: orders.total,
+                    status: "pending",
+                    product_orders: {
+                        create: orders.product_orders.map(p => ({
+                            products_id: p.products_id,
+                            products_name: p.products_name,
+                            product_price: parseInt(p.product_price),
+                            value: p.value,
+                            total: p.total,
+                            status: p.status
+                        }))
+                    }
+                },
+                include: { product_orders: true }
             });
+
+            console.log("✅ Pesanan tersimpan:", savedOrder);
+
 
             console.log(`✅ ${result.count} pesanan disimpan ke database`);
 
