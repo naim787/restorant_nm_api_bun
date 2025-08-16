@@ -36,18 +36,18 @@ model Products {
   @@map("products")
 }
 
-model Pesnan {
-  id       Int    @id @default(autoincrement())
-  products_id String 
-  table_id  String @map("table_id")
-  waiter_name String @map("waiter_name")
-  time     String
-  status String
-  total String
-  type String
-  @@unique([products_id, table_id, time]) // cek kalau duplikat
-  @@map("pesnan")
-}
+// model Pesnan {
+//   id       Int    @id @default(autoincrement())
+//   products_id String 
+//   table_id  String @map("table_id")
+//   waiter_name String @map("waiter_name")
+//   time     String
+//   status String
+//   total String
+//   type String
+//   @@unique([products_id, table_id, time]) // cek kalau duplikat
+//   @@map("pesnan")
+// }
 
 model Order {
   id          Int         @id @default(autoincrement())
