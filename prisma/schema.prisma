@@ -49,3 +49,28 @@ model Pesnan {
   @@map("pesnan")
 }
 
+model Order {
+  id          Int         @id @default(autoincrement())
+  table_id    Int
+  waiter_name String
+  time        String
+  total       Int
+  status      String      @default("pending")
+
+  // Relasi ke item
+  product_orders OrderItem[]
+}
+
+model OrderItem {
+  id             Int    @id @default(autoincrement())
+  orderId        Int
+  products_id    String
+  products_name  String
+  product_price  Int
+  value          Int
+  total          Int
+  status         String  @default("pending")
+
+  // Relasi balik ke Order
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
