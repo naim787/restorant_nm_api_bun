@@ -1,8 +1,24 @@
 import { prisma } from '../../conf/database.js';
 
+// simpan semua koneksi WebSocket aktif
 const clients = new Set();
 
 export const websocketHandler = {
+    open: (ws) => {
+        console.log('WebSocket connection opened');
+        clients.add(ws); // tambahkan ke daftar client
+    },
+
+    close: (ws) => {
+        console.log('WebSocket connection closed');
+        clients.delete(ws); // hapus dari daftar client
+    },
+
+    error: (ws, error) => {
+        console.error('WebSocket error:', error);
+        clients.delete(ws);
+    },
+
     message: async(ws, message) => {
         try {
             console.log('📩 Raw message:', message, typeof message);
@@ -18,13 +34,12 @@ export const websocketHandler = {
 
             console.log('✅ Parsed orders:', orders);
 
-            // Pastikan orders.product_orders adalah array
             if (!orders.product_orders || !Array.isArray(orders.product_orders)) {
                 console.error('❌ orders.product_orders bukan array');
                 return;
             }
 
-            // Simpan ke database
+            // Simpan ke DB
             const savedOrder = await prisma.order.create({
                 data: {
                     table_id: orders.table_id,
@@ -48,9 +63,10 @@ export const websocketHandler = {
 
             console.log("✅ Pesanan tersimpan:", savedOrder);
 
+            // 🔥 broadcast ke semua client
             const payload = JSON.stringify({ success: true, saved: savedOrder });
             for (const client of clients) {
-                if (client.readyState === 1) { // 1 = OPEN
+                if (client.readyState === 1) {
                     client.send(payload);
                 }
             }
@@ -59,17 +75,5 @@ export const websocketHandler = {
             console.error('❌ Error processing orders:', error);
             ws.send(JSON.stringify({ success: false, error: error.message }));
         }
-    },
-
-    open: (ws) => {
-        console.log('WebSocket connection opened');
-    },
-
-    close: (ws) => {
-        console.log('WebSocket connection closed');
-    },
-
-    error: (ws, error) => {
-        console.error('WebSocket error:', error);
     }
 };
