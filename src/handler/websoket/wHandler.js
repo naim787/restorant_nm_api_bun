@@ -1,5 +1,6 @@
 import { prisma } from '../../conf/database.js';
 
+const clients = new Set();
 
 export const websocketHandler = {
     message: async(ws, message) => {
