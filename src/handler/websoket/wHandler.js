@@ -74,17 +74,5 @@ export const websocketHandler = {
             console.error('❌ Error processing orders:', error);
             ws.send(JSON.stringify({ success: false, error: error.message }));
         }
-    },
-
-    open: (ws) => {
-        console.log('WebSocket connection opened');
-    },
-
-    close: (ws) => {
-        console.log('WebSocket connection closed');
-    },
-
-    error: (ws, error) => {
-        console.error('WebSocket error:', error);
     }
 };
