@@ -74,5 +74,5 @@ export const websocketHandler = {
             console.error('❌ Error processing orders:', error);
             ws.send(JSON.stringify({ success: false, error: error.message }));
         }
-    },
+    }
 };
