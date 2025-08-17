@@ -46,8 +46,12 @@ export const websocketHandler = {
 
             console.log("✅ Pesanan tersimpan:", savedOrder);
 
-            // Kirim respon ke FE
-            ws.send(JSON.stringify({ success: true, saved: savedOrder }));
+            const payload = JSON.stringify({ success: true, saved: savedOrder });
+            for (const client of clients) {
+                if (client.readyState === 1) { // 1 = OPEN
+                    client.send(payload);
+                }
+            }
 
         } catch (error) {
             console.error('❌ Error processing orders:', error);
