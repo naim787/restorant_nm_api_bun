@@ -39,7 +39,7 @@ export const websocketHandler = {
                 return;
             }
 
-            if ()
+            if (orders)
             // Simpan ke database
                 const savedOrder = await prisma.order.create({
                 data: {
