@@ -57,7 +57,7 @@ export const websocketHandler = {
                 }
             } else {
                 // Simpan ke database
-                const savedOrder = await prisma.order.create({
+                result = await prisma.order.create({
                     data: {
                         table_id: orders.table_id,
                         waiter_name: orders.waiter_name,
@@ -79,9 +79,9 @@ export const websocketHandler = {
                 });
             }
 
-            console.log("✅ Pesanan tersimpan:", savedOrder);
+            console.log("✅ Pesanan tersimpan:", result);
 
-            const payload = JSON.stringify({ success: true, saved: savedOrder });
+            const payload = JSON.stringify({ success: true, saved: re s });
             for (const client of clients) {
                 if (client.readyState === 1) { // 1 = OPEN
                     client.send(payload);
