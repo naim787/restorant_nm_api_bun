@@ -41,28 +41,30 @@ export const websocketHandler = {
 
             if (orders.status !== "pendigg") {
 
-            } else
-            // Simpan ke database
+
+            } else {
+                // Simpan ke database
                 const savedOrder = await prisma.order.create({
-                data: {
-                    table_id: orders.table_id,
-                    waiter_name: orders.waiter_name,
-                    time: orders.time,
-                    total: orders.total,
-                    status: orders.status,
-                    product_orders: {
-                        create: orders.product_orders.map(p => ({
-                            products_id: p.products_id,
-                            products_name: p.products_name,
-                            product_price: parseInt(p.product_price),
-                            value: p.value,
-                            total: p.total,
-                            status: p.status
-                        }))
-                    }
-                },
-                include: { product_orders: true }
-            });
+                    data: {
+                        table_id: orders.table_id,
+                        waiter_name: orders.waiter_name,
+                        time: orders.time,
+                        total: orders.total,
+                        status: orders.status,
+                        product_orders: {
+                            create: orders.product_orders.map(p => ({
+                                products_id: p.products_id,
+                                products_name: p.products_name,
+                                product_price: parseInt(p.product_price),
+                                value: p.value,
+                                total: p.total,
+                                status: p.status
+                            }))
+                        }
+                    },
+                    include: { product_orders: true }
+                });
+            }
 
             console.log("✅ Pesanan tersimpan:", savedOrder);
 
