@@ -81,7 +81,7 @@ export const websocketHandler = {
 
             console.log("✅ Pesanan tersimpan:", result);
 
-            const payload = JSON.stringify({ success: true, saved: r });
+            const payload = JSON.stringify({ success: true, saved: result });
             for (const client of clients) {
                 if (client.readyState === 1) { // 1 = OPEN
                     client.send(payload);
