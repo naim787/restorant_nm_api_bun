@@ -39,7 +39,7 @@ export const websocketHandler = {
                 return;
             }
 
-            if (orders.status !== "pendigg") {
+            if (orders.status !== "pendig") {
                 // update status pesanan
                 const updatedOrder = await prisma.order.update({
                     where: { id: orders.id },
@@ -53,8 +53,6 @@ export const websocketHandler = {
                         client.send(payload);
                     }
                 }
-                return;
-
             } else {
                 // Simpan ke database
                 const savedOrder = await prisma.order.create({
@@ -77,7 +75,6 @@ export const websocketHandler = {
                     },
                     include: { product_orders: true }
                 });
-
             }
 
             console.log("✅ Pesanan tersimpan:", savedOrder);
