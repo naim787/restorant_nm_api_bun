@@ -46,7 +46,7 @@ export const websocketHandler = {
                     waiter_name: orders.waiter_name,
                     time: orders.time,
                     total: orders.total,
-                    status: orders,
+                    status: orders.status,
                     product_orders: {
                         create: orders.product_orders.map(p => ({
                             products_id: p.products_id,
