@@ -41,9 +41,9 @@ export const websocketHandler = {
 
             if (orders.status !== "pendigg") {
 
-            }
+            } else
             // Simpan ke database
-            const savedOrder = await prisma.order.create({
+                const savedOrder = await prisma.order.create({
                 data: {
                     table_id: orders.table_id,
                     waiter_name: orders.waiter_name,
