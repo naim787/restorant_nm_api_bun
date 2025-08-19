@@ -39,6 +39,8 @@ export const websocketHandler = {
                 return;
             }
 
+            let result;
+
             if (orders.status !== "pendig") {
                 // update status pesanan
                 const updatedOrder = await prisma.order.update({
