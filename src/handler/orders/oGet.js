@@ -6,7 +6,7 @@ export const Orders = {
             const order = await prisma.order.findMany();
 
             return {
-                message: "Users retrieved successfully",
+                message: " retrieved successfully",
                 data: order
             };
         } catch (error) {
