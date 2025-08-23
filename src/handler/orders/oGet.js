@@ -7,7 +7,7 @@ export const Orders = {
 
             return {
                 message: "Users retrieved successfully",
-                data: users
+                data: order
             };
         } catch (error) {
             set.status = 500;
