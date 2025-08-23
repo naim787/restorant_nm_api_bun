@@ -5,7 +5,7 @@ import { setupDatabase } from './conf/database.js';
 import { userRoutes } from './handler/uRoutes.js';
 import { productRoutes } from './handler/pRoutes.js';
 import { websocketHandler } from './handler/websoket/wHandler.js';
-import { ordersRoutes } from './handler/'
+import { ordersRoutes } from './handler/orders'
 
 // Setup database
 
