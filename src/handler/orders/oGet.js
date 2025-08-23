@@ -1,9 +1,9 @@
 import { prisma } from '../../conf/database.js';
 
 export const orders = {
-    handle: async({set }) => {
+    handler: async({set }) => {
         try {
-            const order = await prisma.Order.findMany();
+            const order = await prisma.order.findMany();
 
             return {
                 message: "berhasil meggambil data order",
