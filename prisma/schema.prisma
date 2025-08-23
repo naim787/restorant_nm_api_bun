@@ -46,7 +46,6 @@ model Products {
 //   total String
 //   type String
 //   @@unique([products_id, table_id, time]) // cek kalau duplikat
-  @@map("products")
 //   @@map("pesnan")
 // }
 
