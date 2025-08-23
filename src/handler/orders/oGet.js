@@ -6,13 +6,14 @@ export const Orders = {
             const order = await prisma.order.findMany();
 
             return {
-                message: "product  retrieved successfully",
+                message: "berhasil meggambil data order",
                 data: order
             };
+
         } catch (error) {
             set.status = 500;
             return {
-                error: "Failed to retrieve users"
+                error: "gagal meggambil data order"
             };
         }
     }
