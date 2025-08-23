@@ -1,21 +1,19 @@
 import { prisma } from '../../conf/database.js';
 
 export const Orders = {
-    handle: {
-        async({set }) => {
-            try {
-                const users = await prisma.users.findMany();
+    handle: async({set }) => {
+        try {
+            const users = await prisma.order.findMany();
 
-                return {
-                    message: "Users retrieved successfully",
-                    data: users
-                };
-            } catch (error) {
-                set.status = 500;
-                return {
-                    error: "Failed to retrieve users"
-                };
-            }
+            return {
+                message: "Users retrieved successfully",
+                data: users
+            };
+        } catch (error) {
+            set.status = 500;
+            return {
+                error: "Failed to retrieve users"
+            };
         }
     }
 }
