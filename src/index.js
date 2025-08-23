@@ -4,8 +4,8 @@ import { staticPlugin } from '@elysiajs/static'
 import { setupDatabase } from './conf/database.js';
 import { userRoutes } from './handler/uRoutes.js';
 import { productRoutes } from './handler/pRoutes.js';
+import { ordersRoutes } from './handler/orders.js'
 import { websocketHandler } from './handler/websoket/wHandler.js';
-import { ordersRoutes } from './handler/orders'
 
 // Setup database
 
