@@ -3,7 +3,7 @@ import { prisma } from '../../conf/database.js';
 export const Orders = {
     handle: async({set }) => {
         try {
-            const users = await prisma.order.findMany();
+            const = await prisma.order.findMany();
 
             return {
                 message: "Users retrieved successfully",
