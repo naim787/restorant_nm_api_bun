@@ -1,6 +1,6 @@
 import { prisma } from '../../conf/database.js';
 
-export const Orders = {
+export const orders = {
     handle: async({set }) => {
         try {
             const order = await prisma.order.findMany();
