@@ -2,6 +2,9 @@
 
 ## Getting Started
 To get started with this template, simply paste this command into your terminal:
+```bash
+bun run ./src/index.js
+```
 
 ```bash
 bun run ./src/index.js
