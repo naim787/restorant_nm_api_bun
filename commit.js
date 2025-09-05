@@ -3,7 +3,7 @@ import simpleGit from 'simple-git';
 
 const git = simpleGit();
 
-// Fungsi untuk mendapatkan pesan 
+// Fungsi untuk mendapatkan pesan commit saat ini
 function getTimestampMessage() {
     const now = new Date();
     return `Update: ${now.toLocaleString()}`;
