@@ -9,33 +9,52 @@ import { websocketHandler } from './handler/websoket/wHandler.js';
 import { DesDat } from './services/encripsi_descripsi.js';
 import { t } from 'elysia';
 
+// cokie
+import { cookie } from '@elysiajs/cookie';
+
+
 // Setup database
 await setupDatabase();
 
 const app = new Elysia()
     .use(cors())
+    .use(cookie())
     .use(staticPlugin())
     .get('/', () => 'Hello Elysia')
 
-    // pasword restorant
-    .post('/passwordResto', async ({ body, req , set}) => {
-
+      // pasword restorant
+   .post('/passwordResto', ({ body, cookie: { cokkieRESTO } }) => {
         const password = body.password;
-        console.log(password)
+        console.log("Password diterima:", password);
+
         try {
-          DesDat("f545d873d98301bd2f33952d3aff3a8e10bb4b9afacfc3620ef8cf534483119f", password);
-          // Set cookie bernama "naim" dengan value "true" (bisa disesuaikan)
-          // set.cookie("cokkieRESTO", "NAIM123", {
-          //     httpOnly: true,
-          //     path: "/",
-          //     maxAge: 60 * 60 * 24, // 1 hari
-          //     sameSite: "Strict"
-          // });
-          return { message: 'valid' };
+            DesDat(
+                "f545d873d98301bd2f33952d3aff3a8e10bb4b9afacfc3620ef8cf534483119f",
+                password
+            );
+
+            // ✅ Set cookie seperti dokumentasi resmi
+            cokkieRESTO.value = { status: 'OK' };
+
+            return { message: 'valid' };
         } catch (error) {
-          return { message: 'X invalid' };
+            console.error("ERROR SAAT VERIFIKASI:", error);
+            return { message: 'X invalid' };
         }
-    },{ body: t.Object({  password: t.String() }) })
+    }, {
+        body: t.Object({
+            password: t.String()
+        }),
+        // cookie: t.Cookie({
+        //     cokkieRESTO: t.Object({
+        //         status: t.String()
+        //     })
+        // }, {
+        //     secrets: 'NAIM_SECRET', // 🔐 ganti dengan secretmu sendiri
+        //     sign: ['cokkieRESTO']
+        // })
+    })
+
 
     // User routes
     .use(userRoutes)
