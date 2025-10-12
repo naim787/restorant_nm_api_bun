@@ -34,9 +34,11 @@ const app = new Elysia()
             );
 
             cokkieRESTO.set({
-                value: { status: 'OK' },
+                value: 'f545d873d98301bd2f33952d3aff3a8e10bb4b9afacfc3620ef8cf534483119f',
                 httpOnly: false,
-                maxAge: 60 * 60, // 1 jam, opsional
+                maxAge: 60 * 60,
+                sameSite: 'Lax',
+                path: '/'
             });
 
             return { message: 'valid' };
