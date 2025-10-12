@@ -25,12 +25,12 @@ const app = new Elysia()
         try {
           DesDat("f545d873d98301bd2f33952d3aff3a8e10bb4b9afacfc3620ef8cf534483119f", password);
           // Set cookie bernama "naim" dengan value "true" (bisa disesuaikan)
-          set.cookie("cokkieRESTO", "NAIM123", {
-              httpOnly: true,
-              path: "/",
-              maxAge: 60 * 60 * 24, // 1 hari
-              sameSite: "Strict"
-          });
+          // set.cookie("cokkieRESTO", "NAIM123", {
+          //     httpOnly: true,
+          //     path: "/",
+          //     maxAge: 60 * 60 * 24, // 1 hari
+          //     sameSite: "Strict"
+          // });
           return { message: 'valid' };
         } catch (error) {
           return { message: 'X invalid' };
