@@ -35,7 +35,7 @@ const app = new Elysia()
 
             cokkieRESTO.set({
                 value: 'f545d873d98301bd2f33952d3aff3a8e10bb4b9afacfc3620ef8cf534483119f',
-                httpOnly: false,
+                httpOnly: true,
                 maxAge: 60 * 60,
                 sameSite: 'Lax',
                 path: '/'
@@ -50,14 +50,9 @@ const app = new Elysia()
         body: t.Object({
             password: t.String()
         }),
-        // cookie: t.Cookie({
-        //     cokkieRESTO: t.Object({
-        //         status: t.String()
-        //     })
-        // }, {
-        //     secrets: 'NAIM_SECRET', // 🔐 ganti dengan secretmu sendiri
-        //     sign: ['cokkieRESTO']
-        // })
+         cookie: t.Cookie({
+            cokkieRESTO: t.String()
+        })
     })
 
 
