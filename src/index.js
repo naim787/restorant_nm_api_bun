@@ -33,8 +33,11 @@ const app = new Elysia()
                 password
             );
 
-            // ✅ Set cookie seperti dokumentasi resmi
-            cokkieRESTO.value = { status: 'OK' };
+            cokkieRESTO.set({
+                value: { status: 'OK' },
+                httpOnly: false,
+                maxAge: 60 * 60, // 1 jam, opsional
+            });
 
             return { message: 'valid' };
         } catch (error) {
