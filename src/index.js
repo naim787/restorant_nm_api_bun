@@ -17,31 +17,42 @@ import { cookie } from '@elysiajs/cookie';
 await setupDatabase();
 
 const app = new Elysia()
-    .use(cors())
+    .use(cors({
+        origin: 'http://localhost:5173', // Ganti dengan URL frontend kamu
+	    credentials: true
+    }))
     .use(cookie())
     .use(staticPlugin())
     .get('/', () => 'Hello Elysia')
 
       // pasword restorant
    .post('/passwordResto', ({ body, cookie: { cokkieRESTO } }) => {
-        const password = body.password;
-        console.log("Password diterima:", password);
 
-        try {
-            DesDat(
-                "f545d873d98301bd2f33952d3aff3a8e10bb4b9afacfc3620ef8cf534483119f",
-                password
+       const password = body.password;
+       console.log("Password diterima:", password);
+       
+       try {
+           DesDat(
+               "f545d873d98301bd2f33952d3aff3a8e10bb4b9afacfc3620ef8cf534483119f",
+               password
             );
+            
+            // Sudah login → tolak verifikasi ulang > (untuk sementara hash di taru di sini nanti akan di taru di env)
+             if (cokkieRESTO.value === "f545d873d98301bd2f33952d3aff3a8e10bb4b9afacfc3620ef8cf534483119f") {
+                // return;
+                //  return { redirectTo: '/waiters' };
+                return { message: 'valid' };
+             } else {
+                 cokkieRESTO.set({
+                     value: 'f545d873d98301bd2f33952d3aff3a8e10bb4b9afacfc3620ef8cf534483119f',
+                     httpOnly: true,
+                     maxAge: 60 * 60,
+                     sameSite: 'Lax',
+                     path: '/'
+                 });
+                 return { message: 'valid' };
+             }
 
-            cokkieRESTO.set({
-                value: 'f545d873d98301bd2f33952d3aff3a8e10bb4b9afacfc3620ef8cf534483119f',
-                httpOnly: true,
-                maxAge: 60 * 60,
-                sameSite: 'Lax',
-                path: '/'
-            });
-
-            return { message: 'valid' };
         } catch (error) {
             console.error("ERROR SAAT VERIFIKASI:", error);
             return { message: 'X invalid' };
@@ -50,9 +61,11 @@ const app = new Elysia()
         body: t.Object({
             password: t.String()
         }),
-         cookie: t.Cookie({
-            cokkieRESTO: t.String()
-        })
+        
+        // validasi cookie
+        //  cookie: t.Cookie({
+        //     cokkieRESTO: t.String()
+        // })
     })
 
 
